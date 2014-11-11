@@ -13,14 +13,14 @@
 void Soomla::JSBinding::callNative(const char *params, std::string &result) {
     result.assign(params);
 
-    CCLog("callNative: in >> %s", params);
+    CCLOG("callNative: in >> %s", params);
 
     json_error_t error;
     json_t *root;
     root = json_loads(params, 0, &error);
 
     if (!root) {
-        CCLog("error: at line #%d: %s", error.line, error.text);
+        CCLOGERROR("error: at line #%d: %s", error.line, error.text);
         return;
     }
 
@@ -44,7 +44,7 @@ void Soomla::JSBinding::callNative(const char *params, std::string &result) {
 
     root = CCJsonHelper::getJsonFromCCObject(resultParams);
     char *dump = json_dumps(root, JSON_COMPACT | JSON_ENSURE_ASCII);
-    CCLog("callNative: out >> %s", dump);
+    CCLOG("callNative: out >> %s", dump);
     result = dump;
     free(dump);
 }
@@ -52,7 +52,7 @@ void Soomla::JSBinding::callNative(const char *params, std::string &result) {
 void Soomla::JSBinding::ndkCallback(CCDictionary *params) {
     json_t *root = CCJsonHelper::getJsonFromCCObject(params);
     char *dump = json_dumps(root, JSON_COMPACT | JSON_ENSURE_ASCII);
-    CCLog("ndkCallback: in >> %s", dump);
+    CCLOG("ndkCallback: in >> %s", dump);
 
     std::string jsonParams = dump;
     free(dump);
