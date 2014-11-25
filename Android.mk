@@ -24,7 +24,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/Soomla/data
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/Soomla/domain
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/Soomla/rewards
 ifneq '$(COCOS2D_JAVASCRIPT)' ''
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/Soomla/jsb:
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/Soomla/jsb
 endif
 
 ifneq '$(COCOS2D_JAVASCRIPT)' ''
@@ -53,4 +53,4 @@ $(call import-module,external/chipmunk)
 $(call import-module,scripting/javascript/spidermonkey-android)
 $(call import-module,scripting/javascript/bindings)
 endif
-$(call import-module,external/jansson)
+$(call import-module,jansson)
